@@ -11,27 +11,21 @@
     <ui:define name="title">Exercise1 Numberle Game</ui:define>
     <ui:define name="top">Exercise1 Numberle Game</ui:define>
     <ui:define name="content">
-            <h:form>
-                <h:messages/>
-                <!-- Display previous guesses -->
-                <!-- <ui:repeat value="#{numberleBean.indices}" var="guess">
-                    <h:panelGrid columns="6">
-                        <ui:repeat var="digit" value="#{fn:split(guess, '')}" varStatus="status">
-                            <h:panelGroup styleClass="#{numberleBean.getFeedbackStyle(status.index)}">
-                                <h:outputText value="#{digit}" styleClass="#{numberleBean.getFeedbackStyle(status.index)}"/>
-                            </h:panelGroup>
-                        </ui:repeat>
-                    </h:panelGrid>
-                </ui:repeat> -->
-            <h:panelGrid columns="6">
-                <ui:repeat value="#{numberleBean.indices}" var="guess">
-                    <h:outputText value="#{numberleBean.currentGuess[guess]}" size="1" maxlength="1" styleClass="#{numberleBean.getFeedbackStyle(guess)}"/>
-                </ui:repeat>
-            </h:panelGrid>
+        <h:messages/>
+        <ui:repeat value="#{numberleBean.previousGuesses}" var="guess" varStatus="status">
+            <span class="guess-number">#{numberleBean.remainingAttempts - status.index} guesses remaining:</span>
+            <div class="guess">
+                <div class="#{guess.cssClass}">
+                    <h:outputText value="#{guess.digit}" />
+                </div>
+            </div>
+        </ui:repeat>
+                
                 
 
                 <!-- Input fields for current guess -->
-                <h:panelGrid columns="6">
+            <h:form>
+                <h:panelGrid columns="6" styleClass="guess-row">
                     <ui:repeat var="index" value="#{numberleBean.indices}">
                         <h:inputText value="#{numberleBean.currentGuess[index]}" size="1" maxlength="1"
                                     styleClass="#{numberleBean.getFeedbackStyle(index)}">
@@ -46,13 +40,13 @@
             </h:form>
 
             <!-- Display feedback for current guess -->
-            <div id="feedback">
+            <!-- <div id="feedback">
                 <h:panelGrid columns="6">
                     <ui:repeat value="#{numberleBean.currentGuess}" var="digit" varStatus="status">
                         <h:outputText value="#{digit}" styleClass="feedback-box #{numberleBean.getFeedbackStyle(status.index)}" />
                     </ui:repeat>
                 </h:panelGrid>
-            </div>
+            </div> -->
     </ui:define>
 </ui:composition>
 </html>

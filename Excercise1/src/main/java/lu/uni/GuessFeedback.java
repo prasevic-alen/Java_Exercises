@@ -1,22 +1,19 @@
 package lu.uni;
 
-import java.io.Serializable;
+public class GuessFeedback {
+    private int digit;
+    private String cssClass;
 
-public class GuessFeedback implements Serializable {
-    private int[] guess;
-    private String feedback;
-
-    public GuessFeedback(int[] guess, String feedback) {
-        this.guess = guess;
-        this.feedback = feedback;
+    public GuessFeedback(int digit, String cssClass) {
+        this.digit = digit;
+        this.cssClass = cssClass;
     }
 
-    public int[] getGuess() {
-        return guess;
+    public int getDigit() {
+        return digit;
     }
 
-    public String getFeedback() {
-        return feedback;
+    public String getCssClass() {
+        return cssClass;
     }
 }
-

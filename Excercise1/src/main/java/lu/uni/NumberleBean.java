@@ -22,7 +22,7 @@ public class NumberleBean implements Serializable {
 
     private int[] targetNumber;
     private int[] currentGuess = new int[6];
-    private List<String> previousGuesses = new ArrayList<>();
+    private List<Guess> previousGuesses = new ArrayList<>();
     private int remainingAttempts = 6;
     private final String NUMBERS_FILE_PATH = "/numbers.txt";
     private static final Logger logger = Logger.getLogger("loginBean");
@@ -65,42 +65,43 @@ public class NumberleBean implements Serializable {
     public String makeGuess() {
         // Decrease remaining attempts
         remainingAttempts--;
-
+    
         // Check if guess is correct
-        StringBuilder feedback = new StringBuilder(); // Feedback string for the current guess
         int greenCount = 0; // Correct digits at the right position
+        List<Guess> feedbackList = new ArrayList<>();
+    
         for (int i = 0; i < 6; i++) {
             if (currentGuess[i] == targetNumber[i]) {
                 greenCount++;
-                feedback.append("correct ");
+                feedbackList.add(new Guess(currentGuess[i], "correct"));
             } else if (containsDigit(targetNumber, currentGuess[i])) {
                 int targetIndex = getIndex(targetNumber, currentGuess[i]);
                 if (targetIndex < i) {
-                    feedback.append("misplaced-left ");
+                    feedbackList.add(new Guess(currentGuess[i], "misplaced-left"));
                 } else {
-                    feedback.append("misplaced-right ");
+                    feedbackList.add(new Guess(currentGuess[i], "misplaced-right"));
                 }
             } else {
-                feedback.append("incorrect ");
+                feedbackList.add(new Guess(currentGuess[i], "incorrect"));
             }
         }
-
+    
         // If all digits are correct
         if (greenCount == 6) {
-            previousGuesses.add(formatGuess(currentGuess) + " " + feedback.toString().trim());
+            previousGuesses.add(new Guess(-1, "success")); // Placeholder for success feedback
             return "success";
         }
-
+    
         // If remaining attempts are zero
         if (remainingAttempts == 0) {
-            previousGuesses.add(formatGuess(currentGuess) + " " + feedback.toString().trim());
+            previousGuesses.add(new Guess(-1, "failure")); // Placeholder for failure feedback
             return "failure";
         }
-
-        previousGuesses.add(formatGuess(currentGuess) + " " + feedback.toString().trim()); // Add the guess and feedback to previous guesses
+    
+        previousGuesses.addAll(feedbackList);
         return null;
     }
-
+    
     
 
     public String getFeedbackStyle(int index) {
@@ -136,14 +137,6 @@ public class NumberleBean implements Serializable {
         return -1;
     }
 
-    private String formatGuess(int[] guess) {
-        StringBuilder sb = new StringBuilder();
-        for (int digit : guess) {
-            sb.append(digit);
-        }
-        return sb.toString();
-    }
-
 
     // Getters and setters
     public int[] getCurrentGuess() {
@@ -158,7 +151,7 @@ public class NumberleBean implements Serializable {
         return remainingAttempts;
     }
 
-    public List<String> getPreviousGuesses() {
+    public List<Guess> getPreviousGuesses() {
         return previousGuesses;
     }
 
