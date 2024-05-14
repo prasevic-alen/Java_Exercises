@@ -49,28 +49,40 @@ a:visited:hover {
 
 .correct {
   background-color: green; /* Green */
+  display: inline-block;
   text-align: center;
-  margin: 2px; 
+  width: 30px;
+  height: 30px;
+  margin: 1px; 
 }
 
 .incorrect { 
   background-color: red; /* Red */ 
+  display: inline-block;
   text-align: center;
-  position: absolute;
-  margin: 2px; 
+  width: 30px;
+  height: 30px;
+  margin: 1px; 
 }
 
 .misplaced-left {
   background-color: blue; /* Blue */
+  display: inline-block;
   text-align: center;
-  margin: 2px; 
+  width: 30px;
+  height: 30px;
+  margin: 1px; 
 }
 
 .misplaced-right {
-  text-align: center;
   background-color: rgba(215, 145, 15, 0.993); /* Orange */
-  margin: 5px; 
+  display: inline-block;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  margin: 1px; 
 }
+
 
 .guess-row input[type="text"] { 
   text-align: center;       
@@ -82,10 +94,9 @@ a:visited:hover {
   margin-bottom: 10px;
 }
 
-.guess .box {
-  display: inline-block;
-  width: 30px; /* Adjust width as needed */
-  height: 30px; /* Adjust height as needed */
+.guess {
+  width: 250px; /* Adjust width as needed */
+  height: fit-content; /* Adjust height as needed */
   border: 1px solid black;
   text-align: center;
   margin-right: 5px;

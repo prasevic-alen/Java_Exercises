@@ -12,17 +12,18 @@
     <ui:define name="top">Exercise1 Numberle Game</ui:define>
     <ui:define name="content">
         <h:messages/>
-        <ui:repeat value="#{numberleBean.previousGuesses}" var="guess" varStatus="status">
-            <span class="guess-number">#{numberleBean.remainingAttempts - status.index} guesses remaining:</span>
+            <div class="guess-number">#{numberleBean.remainingAttempts} guesses remaining:</div>
             <div class="guess">
-                <div class="#{guess.cssClass}">
-                    <h:outputText value="#{guess.digit}" />
-                </div>
-            </div>
-        </ui:repeat>
-                
-                
 
+                <ui:repeat value="#{numberleBean.previousGuesses}" var="guess" varStatus="status">
+                    <div class="#{guess.cssClass}">
+                        <h:outputText value="#{guess.digit}" />
+                    </div>
+                </ui:repeat>
+                </div>
+            
+            <br/>
+                
                 <!-- Input fields for current guess -->
             <h:form>
                 <h:panelGrid columns="6" styleClass="guess-row">
