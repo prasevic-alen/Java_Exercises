@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xml:lang="en">
+
+<ui:composition template="templates/basic_template.xhtml">
+    <ui:define name="title">Exercise1 Numberle Game</ui:define>
+    <ui:define name="top">Exercise1 Numberle Game</ui:define>
+    <ui:define name="content">
+            <h:form>
+                <h:messages/>
+                <!-- Display previous guesses -->
+                <!-- <ui:repeat value="#{numberleBean.indices}" var="guess">
+                    <h:panelGrid columns="6">
+                        <ui:repeat var="digit" value="#{fn:split(guess, '')}" varStatus="status">
+                            <h:panelGroup styleClass="#{numberleBean.getFeedbackStyle(status.index)}">
+                                <h:outputText value="#{digit}" styleClass="#{numberleBean.getFeedbackStyle(status.index)}"/>
+                            </h:panelGroup>
+                        </ui:repeat>
+                    </h:panelGrid>
+                </ui:repeat> -->
+            <h:panelGrid columns="6">
+                <ui:repeat value="#{numberleBean.indices}" var="guess">
+                    <h:outputText value="#{numberleBean.currentGuess[guess]}" size="1" maxlength="1" styleClass="#{numberleBean.getFeedbackStyle(guess)}"/>
+                </ui:repeat>
+            </h:panelGrid>
+                
+
+                <!-- Input fields for current guess -->
+                <h:panelGrid columns="6">
+                    <ui:repeat var="index" value="#{numberleBean.indices}">
+                        <h:inputText value="#{numberleBean.currentGuess[index]}" size="1" maxlength="1"
+                                    styleClass="#{numberleBean.getFeedbackStyle(index)}">
+                            <f:ajax event="keyup" render="feedback"/>
+                        </h:inputText>
+                    </ui:repeat>
+                </h:panelGrid>
+
+                <h:commandButton value="Guess" action="#{numberleBean.makeGuess}"
+                                 disabled="#{numberleBean.remainingAttempts eq 0}"/>
+                <h:commandButton value="New Game" action="#{numberleBean.startGame}" immediate="true"/>
+            </h:form>
+
+            <!-- Display feedback for current guess -->
+            <div id="feedback">
+                <h:panelGrid columns="6">
+                    <ui:repeat value="#{numberleBean.currentGuess}" var="digit" varStatus="status">
+                        <h:outputText value="#{digit}" styleClass="feedback-box #{numberleBean.getFeedbackStyle(status.index)}" />
+                    </ui:repeat>
+                </h:panelGrid>
+            </div>
+    </ui:define>
+</ui:composition>
+</html>

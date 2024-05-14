@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="jakarta.faces.facelets"
+  xmlns:h="jakarta.faces.html"
+  xmlns:f="jakarta.faces.core"
+  xml:lang="en"
+>
+  <ui:composition template="templates/basic_template.xhtml">
+    <ui:define name="title"> Jakarta Faces-Ajax Example </ui:define>
+    <ui:define name="top"> Jakarta Faces-Ajax Example </ui:define>
+    <ui:define name="content">
+      <h:form>
+        <h:panelGrid columns="2">
+          <h:outputText value="Name" />
+          <h:inputText id="input1" value="#{loginBean.name}">
+            <f:ajax
+              event="keyup"
+              render="mytext1"
+              execute="input1"
+              listener="#{loginBean.ajaxreadInputName}"
+            />
+          </h:inputText>
+        </h:panelGrid>
+        <p style="color: red">
+          <h:outputText id="mytext1" value="#{loginBean.inputname}" />
+        </p>
+      </h:form>
+      <h:panelGroup rendered="#{not empty facesContext.messages}">
+        <h:messages />
+      </h:panelGroup>
+    </ui:define>
+  </ui:composition>
+</html>
