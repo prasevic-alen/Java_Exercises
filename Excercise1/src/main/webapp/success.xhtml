@@ -4,17 +4,17 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:ui="jakarta.faces.facelets"
   xmlns:h="jakarta.faces.html"
-  xml:lang="en"
->
-<ui:composition template="templates/basic_template.xhtml">
-  <ui:define name="title"> Excercise1 success</ui:define>
-  <ui:define name="top"> Excercise1 success </ui:define>
-  <ui:define name="pageName"> Success! Congratulations! </ui:define>
+  xml:lang="en">
 
-  <ui:define name="content">
-    <h3>You guessed the number <span class="correct">#{numberleBean.numberToGuess}</span> correctly.</h3>
-    <h:button value="Return to Index" outcome="index" styleClass="myButton" />
-  </ui:define>
+  <ui:composition template="templates/basic_template.xhtml">
+    <ui:define name="title"> Excercise1 success</ui:define>
+    <ui:define name="top"> Excercise1 success </ui:define>
+    <ui:define name="pageName"> Success! Congratulations! </ui:define>
 
-</ui:composition>
+    <ui:define name="content">
+      <h3>You guessed the number <span class="correct">&nbsp; #{numberleBean.numberToGuess} &nbsp;</span> correctly.</h3>
+      <h:button value="Return to Index" outcome="index" styleClass="myButton" />
+    </ui:define>
+
+  </ui:composition>
 </html>

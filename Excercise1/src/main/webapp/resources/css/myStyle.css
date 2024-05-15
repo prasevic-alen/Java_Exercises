@@ -135,12 +135,17 @@ a:visited:hover {
   touch-action: manipulation;
 }
 
-.button:active {
+.myButton:active {
   background-color: #006AE8;
 }
 
-.button:hover {
+.myButton:hover {
   background-color: #1C84FF;
+}
+
+.myButton:disabled,
+.myButton[disabled]{
+  background-color: #c1d3ea
 }
 
 .center {

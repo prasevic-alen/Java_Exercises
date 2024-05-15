@@ -4,14 +4,14 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:h="jakarta.faces.html"
   xmlns:ui="jakarta.faces.facelets"
-  xml:lang="en"
->
+  xml:lang="en">
+  
   <ui:composition template="templates/basic_template.xhtml">
     <ui:define name="title">Number guess failure</ui:define>
     <ui:define name="top"> Number guess failure! </ui:define>
     <ui:define name="content">
       <h3>Failed to guess correct number.<br />
-      Correct number to guess was <span class="incorrect">#{numberleBean.numberToGuess}.</span> </h3>
+      Correct number to guess was <span class="incorrect">&nbsp; #{numberleBean.numberToGuess}.&nbsp; </span> </h3>
       <h:button value="Return to Index" outcome="index" styleClass="myButton" />
     </ui:define>
   </ui:composition>
