@@ -60,11 +60,9 @@
         <h:panelGroup rendered="#{not empty numberleBean.previousGuesses}">
             <div class="guess">
                 <ui:repeat value="#{numberleBean.previousGuesses}" var="guess">
-                    <ui:fragment rendered="#{guess.digit ne -1}">
                         <div class="digitBox #{guess.cssClass}">
                             #{guess.digit}
                         </div>
-                    </ui:fragment>
                 </ui:repeat>
             </div>
         </h:panelGroup>
