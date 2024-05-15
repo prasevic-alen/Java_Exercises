@@ -10,12 +10,22 @@ body {
 h1 {
   font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE",
     sans-serif;
-  border-bottom: 1px solid #afafaf;
+  /* border-bottom: 1px solid #afafaf; */
   font-size: 20px;
   font-weight: bold;
   margin: 0px;
   padding: 0px;
-  color: rgb(0, 174, 255);
+  color: rgb(237, 247, 251);
+}
+h2 {
+  font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE",
+    sans-serif;
+  border-bottom: 1px solid #afafaf;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+  color: rgb(237, 247, 251);
 }
 
 a:link,
@@ -34,8 +44,8 @@ a:visited:hover {
 
 .center_content {
   position: absolute;
-  width: 350px;
-  background-color: #f6fbfb;
+  width: 400px;
+  background-color: rgb(214, 233, 249);
   padding: 5px;
 }
 
@@ -47,57 +57,94 @@ a:visited:hover {
   margin: 0px 0px 10px 0px;
 }
 
-.correct {
-  background-color: green; /* Green */
-  display: inline-block;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  margin: 1px; 
-}
-
-.incorrect { 
-  background-color: red; /* Red */ 
-  display: inline-block;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  margin: 1px; 
-}
-
-.misplaced-left {
-  background-color: blue; /* Blue */
-  display: inline-block;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  margin: 1px; 
-}
-
-.misplaced-right {
-  background-color: rgba(215, 145, 15, 0.993); /* Orange */
-  display: inline-block;
-  text-align: center;
-  width: 30px;
-  height: 30px;
-  margin: 1px; 
-}
-
-
-.guess-row input[type="text"] { 
-  text-align: center;       
-  font-size: 20px;           
-  line-height: 1em; 
-}
-
-.guess-number {
-  margin-bottom: 10px;
+.guessForm {
+  display: block;
+  background: rgb(135, 226, 251);
+  padding: 10px;
 }
 
 .guess {
-  width: 250px; /* Adjust width as needed */
-  height: fit-content; /* Adjust height as needed */
-  border: 1px solid black;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-gap: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: lightblue;
+}
+
+.digitBox {
   text-align: center;
-  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+  line-height: 1em;
+  align-content: center;
+}
+
+.correct {
+  background-color: rgb(6, 157, 6); /* Green */
+}
+
+.incorrect { 
+  background-color: rgb(239, 15, 15); /* Red */ 
+}
+
+.misplaced-left {
+  background-color: rgb(0, 170, 255); /* Blue */
+}
+
+.misplaced-right {
+  background-color: rgb(225, 154, 23); /* Orange */
+}
+
+.guess-row input[type="text"] { 
+  text-align: center;       
+  font-size: 24px;           
+  line-height: 1em; 
+  margin: 2px;
+}
+
+.guessText {
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding-top: 10px;
+}
+
+/* CSS used from https://getcssscan.com/css-buttons-examples */
+.myButton {
+  align-items: center;
+  appearance: button;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 10px 10px 10px 5px;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:active {
+  background-color: #006AE8;
+}
+
+.button:hover {
+  background-color: #1C84FF;
+}
+
+.center {
+  display: flex;
+  align-content: center;
+  text-align: center;
 }

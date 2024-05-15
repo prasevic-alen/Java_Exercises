@@ -9,14 +9,12 @@
 <ui:composition template="templates/basic_template.xhtml">
   <ui:define name="title"> Excercise1 success</ui:define>
   <ui:define name="top"> Excercise1 success </ui:define>
+  <ui:define name="pageName"> Success! Congratulations! </ui:define>
+
   <ui:define name="content">
-  <h:head>
-    <title>Number guessed correctly!</title>
-  </h:head>
-  <h:body>
-    <h1 style="color: green">Success!</h1>
-    <h2>Congratulations! You guessed the number correctly.</h2>
-  </h:body>
+    <h3>You guessed the number <span class="correct">#{numberleBean.numberToGuess}</span> correctly.</h3>
+    <h:button value="Return to Index" outcome="index" styleClass="myButton" />
   </ui:define>
-  </ui:composition>
+
+</ui:composition>
 </html>

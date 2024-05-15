@@ -1,6 +1,2 @@
-lu/uni/GameNumber.class
-lu/uni/LoginBean2.class
-lu/uni/Guess.class
-lu/uni/GuessFeedback.class
 lu/uni/NumberleBean.class
-lu/uni/DigitStatus.class
+lu/uni/Guess.class

@@ -10,44 +10,69 @@
 <ui:composition template="templates/basic_template.xhtml">
     <ui:define name="title">Exercise1 Numberle Game</ui:define>
     <ui:define name="top">Exercise1 Numberle Game</ui:define>
+    <ui:define name="pageName"> Playing the game to guess the number! </ui:define>
     <ui:define name="content">
         <h:messages/>
-            <div class="guess-number">#{numberleBean.remainingAttempts} guesses remaining:</div>
-            <div class="guess">
+        <h4>Game rules:</h4>
+        <table>
+            <tr>
+                <td>  Correctly placed digit is colored:</td>
+                <td><span class="correct">Green.</span></td>
+            </tr>
+            <tr>
+                <td>  Incorrectly placed digit is colored:</td>
+                <td><span class="incorrect">Red.</span></td>
+            </tr>
+            <tr>
+                <td>  Misplaced digit right is colored:</td>
+                <td><span class="misplaced-right">Orange.</span></td>
+            </tr>
+            <tr>
+                <td>  Misplaced digit left is colored:</td>
+                <td><span class="misplaced-left">Blue.</span></td>
+            </tr>
+        </table>
 
-                <ui:repeat value="#{numberleBean.previousGuesses}" var="guess" varStatus="status">
-                    <div class="#{guess.cssClass}">
-                        <h:outputText value="#{guess.digit}" />
-                    </div>
-                </ui:repeat>
-                </div>
-            
-            <br/>
+        <h3>#{numberleBean.remainingAttempts} guesses remaining:</h3>
                 
-                <!-- Input fields for current guess -->
-            <h:form>
+        <div class="guessForm">        <!-- Input fields for current guess -->
+            <div class="center">
+                <h:form>
+                
                 <h:panelGrid columns="6" styleClass="guess-row">
                     <ui:repeat var="index" value="#{numberleBean.indices}">
                         <h:inputText value="#{numberleBean.currentGuess[index]}" size="1" maxlength="1"
                                     styleClass="#{numberleBean.getFeedbackStyle(index)}">
-                            <f:ajax event="keyup" render="feedback"/>
+                            <!-- <f:ajax event="keyup" render="feedback"/> -->
                         </h:inputText>
                     </ui:repeat>
                 </h:panelGrid>
-
-                <h:commandButton value="Guess" action="#{numberleBean.makeGuess}"
-                                 disabled="#{numberleBean.remainingAttempts eq 0}"/>
-                <h:commandButton value="New Game" action="#{numberleBean.startGame}" immediate="true"/>
             </h:form>
-
-            <!-- Display feedback for current guess -->
-            <!-- <div id="feedback">
-                <h:panelGrid columns="6">
-                    <ui:repeat value="#{numberleBean.currentGuess}" var="digit" varStatus="status">
-                        <h:outputText value="#{digit}" styleClass="feedback-box #{numberleBean.getFeedbackStyle(status.index)}" />
-                    </ui:repeat>
-                </h:panelGrid>
-            </div> -->
+            </div>
+            <div class="center">
+                <h:form>
+                <h:commandButton  value="Guess" action="#{numberleBean.makeGuess}"
+                                 disabled="#{numberleBean.remainingAttempts eq 0}" styleClass="myButton"/>
+                <h:commandButton value="New Game" action="#{numberleBean.startGame}" immediate="true" styleClass="myButton"/>
+            </h:form>
+            </div>
+        </div>
+        <h:panelGroup rendered="#{not empty numberleBean.previousGuesses}">
+            <div class="guess">
+                <ui:repeat value="#{numberleBean.previousGuesses}" var="guess">
+                    <ui:fragment rendered="#{guess.digit ne -1}">
+                        <div class="digitBox #{guess.cssClass}">
+                            #{guess.digit}
+                        </div>
+                    </ui:fragment>
+                </ui:repeat>
+            </div>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{not facesContext.viewRoot.viewId == '/index.xhtml'}">
+    <div class="digitBox failure">
+        -1
+    </div>
+</h:panelGroup>
     </ui:define>
 </ui:composition>
 </html>

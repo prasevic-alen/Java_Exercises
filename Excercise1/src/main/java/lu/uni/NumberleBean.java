@@ -26,6 +26,7 @@ public class NumberleBean implements Serializable {
     private int remainingAttempts = 6;
     private final String NUMBERS_FILE_PATH = "/numbers.txt";
     private static final Logger logger = Logger.getLogger("loginBean");
+    private String numberToGuess;
 
     public NumberleBean() {
         startGame();
@@ -51,7 +52,8 @@ public class NumberleBean implements Serializable {
             }
             
             String line = reader.readLine(); // Read the random line
-            logger.log(Level.INFO, "INFO: number to guess: " + line);
+            numberToGuess = line ;
+            logger.log(Level.INFO, "INFO: number to guess: " + numberToGuess);
             for (int i = 0; i < 6; i++) {
                 number[i] = Character.getNumericValue(line.charAt(i));
             }
@@ -157,5 +159,9 @@ public class NumberleBean implements Serializable {
 
     public List<Integer> getIndices() {
         return IntStream.range(0, 6).boxed().collect(Collectors.toList());
+    }
+
+    public String getNumberToGuess() {
+        return numberToGuess;
     }
 }

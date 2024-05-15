@@ -7,13 +7,12 @@
   xml:lang="en"
 >
   <ui:composition template="templates/basic_template.xhtml">
-    <h:head>
-      <title>Login failed</title>
-    </h:head>
-    <ui:define name="title">Login failure</ui:define>
-    <ui:define name="top"> Login failed! </ui:define>
+    <ui:define name="title">Number guess failure</ui:define>
+    <ui:define name="top"> Number guess failure! </ui:define>
     <ui:define name="content">
-      Your attempt to login failed due to wrong credentials.
+      <h3>Failed to guess correct number.<br />
+      Correct number to guess was <span class="incorrect">#{numberleBean.numberToGuess}.</span> </h3>
+      <h:button value="Return to Index" outcome="index" styleClass="myButton" />
     </ui:define>
   </ui:composition>
 </html>
