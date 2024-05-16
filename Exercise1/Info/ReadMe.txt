@@ -1,9 +1,10 @@
 How to use
-    1. Extract zip archive or use git clone https://github.com/prasevic-alen/enJava_Excercises.git
+    1. Extract zip archive or use git clone https://github.com/prasevic-alen/Java_Exercises.git
     2. enter the folder Exercise1
     3. Makes sure that Wildfly server is running and than execute
     mvn clean package wildfly:deploy
     4. Access page on http://wildflyServerIP:8080/Exercise1
+       In my case used: http://localhost:8080/Exercise1 
 
 Information about the Bean and content
     - NumberleBean is using Guess class to store guessed digits
