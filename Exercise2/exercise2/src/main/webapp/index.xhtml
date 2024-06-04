@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="jakarta.faces.facelets" xml:lang="en">
+   <h:head>
+      <title>Showing Customers</title>
+   </h:head>
+   <h:body>
+      <h1>Find Customers</h1>
+      <p>Please input the ID of the customer:</p>
+      <div>
+         <h:form>
+            <h:panelGrid columns="2">
+               <h:outputText value="Customer ID: " />
+               <h:inputText value="#{customer.id}" required="true" />
+               <h:commandButton value="Find Customer Information"
+                                action="#{customer.findById}"/>
+            </h:panelGrid>
+         </h:form>
+      </div>
+
+      <ui:fragment rendered="${not empty customer.name}">
+         <div style="padding-top:5mm">
+            <h:outputText value="Found customer name as '${customer.name}' and customer
+                          email as '${customer.email}'"/>
+         </div>
+      </ui:fragment>
+
+      <ui:fragment rendered="${empty customer.name and not empty customer.id}">
+         <div style="color:red; padding-top: 5mm">
+            <h:outputText value="Customer does not exist!!" />
+         </div>
+      </ui:fragment>
+      
+      <ui:fragment rendered="${not empty customer.placedOrders}">
+        <h2 style="padding-top:5mm">Placed Orders for this customer (one-to-many relationship example)</h2>
+        <ul>
+      <ui:repeat value="#{customer.placedOrders}" var="order">
+        <li> <strong>${order.description} </strong>: ${order.price} EU </li>
+      </ui:repeat>
+        </ul>
+      </ui:fragment>
+      
+      <ui:fragment rendered="${not empty customer.visitedStores}">
+        <h2 style="padding-top:1cm">Visited Store Locations (many-to-many relationship example)</h2>
+        <ul>
+          <ui:repeat value="#{customer.visitedStores}" var="store">
+            <li> <strong>${store.location} </strong></li>
+         </ui:repeat>
+        </ul>
+      </ui:fragment>
+
+      <div style="padding-top:5mm">
+      <hr/>
+      <div>
+          Please use <h:link value="this link" outcome="index2"/> to go to example page for insert/update.
+      </div>
+      </div>
+   </h:body>
+</html>
+

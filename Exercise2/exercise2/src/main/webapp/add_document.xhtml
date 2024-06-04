@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">  <h:head>
+    <title>Document Details</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2"> 
+            <h:outputLabel for="title" value="Title:"/>
+            <h:inputText id="title" value="#{documentBean.newDocument.title}" />
+        
+            <h:outputLabel for="abstract" value="Abstract:"/>
+            <h:inputText id="abstract" value="#{documentBean.newDocument.abstractText}" />
+
+            <h:outputLabel for="pubDate" value="Publication Date:"/>
+            <p:calendar id="pubDate" value="#{documentBean.newDocument.publicationDate}" pattern="yyyy-MM-dd"/>
+
+            <h:outputLabel for="location" value="Storage Location:"/>
+            <h:inputText id="location" value="#{documentBean.newDocument.storageLocation}" />
+
+            <h:outputLabel for="author" value="Author:"/>
+            <h:selectOneMenu id="author" value="#{documentBean.selectedAuthorId}">
+                <f:selectItems value="#{documentBean.availableAuthors}" var="author" itemValue="#{author.id}" itemLabel="#{author.name}" />
+            </h:selectOneMenu>
+            
+        </h:panelGrid>
+
+        <p:commandButton value="Create Document" actionListener="#{documentBean.createNewDocument}" update="@form" />
+    </h:form>
+</h:body>
+</html>

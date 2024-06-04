@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core" xml:lang="en">
+   <h:head>
+      <title>Create a new Customer</title>
+   </h:head>
+   <h:body>
+      <f:event type="preRenderView" listener="#{customer.init}"/>
+      <h1>Create a new Customer</h1>
+      <p>Please input the data of the new customer. Note that for simplicity no validation is done and a new customer will always be created even if a customer with the input name already exists in the DB:</p>
+      <div>
+         <h:form>
+            <h:panelGrid columns="2">
+               <h:outputText value="Customer Name: " />
+               <h:inputText value="#{customer.name}" />
+               <h:outputText value="Customer Email: " />
+               <h:inputText value="#{customer.email}" />
+               <h:outputText value =" " /> <h:outputText value =" " />
+               <h:commandButton value="Create new Customer" action="#{customer.add}"/>
+            </h:panelGrid>
+         </h:form>
+      </div>
+
+      <div style="padding-top:5mm">
+         <hr/>
+         <div>
+             Please use <h:link value="this link" outcome="index"/> to go to the main page.
+         </div>
+         </div>
+   </h:body>
+</html>
+
