@@ -105,8 +105,8 @@
             <ui:repeat value="#{facesContext.messageList}" var="message">
                 <ul class="myMessages #{message.severity.toString().toLowerCase()}">
                     <li>
-                        <span>#{message.summary}</span>
-                        <span>#{message.detail}</span>
+                        <h:outputText value="#{message.summary}" />
+                        <h:outputText value="#{message.detail}" escape="false"/>
                     </li>
                 </ul>
             </ui:repeat>
