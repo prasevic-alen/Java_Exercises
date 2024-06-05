@@ -1,0 +1,189 @@
+body {
+    background-color: #ffffff;
+    font-size: 14px;
+    font-family: Verdana, "Verdana CE", Arial, "Arial CE", "Lucida Grande CE",
+      lucida, "Helvetica CE", sans-serif;
+    color: #000000;
+    margin: 10px;
+  }
+  
+  h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE",
+      sans-serif;
+    /* border-bottom: 1px solid #afafaf; */
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(237, 247, 251);
+  }
+  h2 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE",
+      sans-serif;
+    border-bottom: 1px solid #afafaf;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: rgb(237, 247, 251);
+  }
+  
+  a:link,
+  a:visited {
+    color: #045491;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  a:link:hover,
+  a:visited:hover {
+    color: #045491;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .center_content {
+    position: absolute;
+    width: auto;
+    min-width: 400px;
+    background-color: rgb(214, 233, 249);
+    padding: 5px;
+  }
+  
+  #top {
+    position: relative;
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+  }
+   
+  /* CSS used from https://getcssscan.com/css-buttons-examples */
+  .myButton {
+    align-items: center;
+    appearance: button;
+    background-color: #0276FF;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "RM Neue",sans-serif;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 10px 10px 10px 5px;
+    padding: 10px 20px;
+    text-align: center;
+    text-transform: none;
+    transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .rightButton {
+    align-items: center;
+    appearance: button;
+    background-color: #0276FF;
+    border-radius: 6px;
+    border-style: none;
+    color: #fff;
+    font-size: 14px;   
+    line-height: 1.2;   
+    padding: 4px;  
+    margin: 0px 20px 0px 20px;
+    width: 60px;
+  }
+
+  .authorButton {
+    align-items: center;
+    appearance: button;
+    background-color: #0276FF;
+    border-radius: 5px;
+    border-style: none;
+    color: #fff;
+    font-size: 14px;   
+    line-height: 1.2;   
+    padding: 2px;  
+    margin: 0px 0px 0px 20px;
+    width: 60px;
+  }
+  .myButton:active {
+    background-color: #006AE8;
+  }
+  
+  .myButton:hover {
+    background-color: #1C84FF;
+  }
+  
+  .myButton:disabled,
+  .myButton[disabled]{
+    background-color: #c1d3ea
+  }
+  
+  .center {
+    display: flex;
+    align-content: center;
+    text-align: center;
+  }
+
+  .dataTableHeader {
+    font-weight: bold;
+    background-color: rgb(177, 216, 248);;
+}
+
+  .dataTableCell {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Div-Based Style */
+.documentDetailsDiv {
+  width: 100%; /* Or set a fixed width */
+}
+
+.documentDetailsDiv label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.documentDetailsDiv .input-field {
+  width: calc(100% - 10px); /* Adjust as needed */
+  padding: 8px;
+  border: 1px solid #515050;
+  margin-bottom: 10px;
+}
+
+.myMessages {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  list-style: none;
+}
+
+.myMessages.info {
+  color: #009b05;
+  background-color: #BDE5F8;
+  border: 1px solid #BDE5F8;
+}
+
+.myMessages.error {
+  color: #D8000C;
+  background-color: #FAE5E5;
+  border: 1px solid #FAE5E5;
+}
+
+.myMessages.warn {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  border: 1px solid #FEEFB3;
+}
+
+.myMessages.fatal {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border: 1px solid #FFBABA;
+}

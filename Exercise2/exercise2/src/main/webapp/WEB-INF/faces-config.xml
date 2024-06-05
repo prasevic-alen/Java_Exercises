@@ -8,10 +8,33 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
     <navigation-rule>
-        <from-view-id>/search.xhtml</from-view-id>
+        <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>details</from-outcome>
-            <to-view-id>/details.xhtml</to-view-id>
+            <from-outcome>addDocument</from-outcome>
+            <to-view-id>/addDocument.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>searchDocument</from-outcome>
+            <to-view-id>/searchDocument.xhtml</to-view-id>
+        </navigation-case>
+    
+        <navigation-case>
+            <from-outcome>addAuthor</from-outcome>
+            <to-view-id>/addAuthor.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>authors</from-outcome>
+            <to-view-id>/authors.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/addAuthor.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>back</from-outcome>
+            <to-view-id>/authors.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
 </faces-config>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="templates/template.xhtml">
+      <ui:define name="title">Assign Author to Document</ui:define>
+      <ui:define name="top">Assign Author to Document</ui:define>
+      <ui:define name="content">
+    <h:form id="assignAuthorForm">
+        <h:panelGrid columns="2">
+            <h:outputLabel for="selectedDocument" value="Document:" />
+            <h:selectOneMenu id="selectedDocument" value="#{assignAuthorBean.selectedDocumentId}">
+                <f:selectItems value="#{assignAuthorBean.documents}" var="doc" itemLabel="#{doc.title}" itemValue="#{doc.id}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel for="selectedAuthor" value="Author:" />
+            <h:selectOneMenu id="selectedAuthor" value="#{assignAuthorBean.selectedAuthorId}">
+                <f:selectItems value="#{assignAuthorBean.availableAuthors}" var="author" itemLabel="#{author.name}" itemValue="#{author.id}" />
+            </h:selectOneMenu>
+
+        </h:panelGrid>
+
+        <h:commandButton value="Assign Author" action="#{assignAuthorBean.assignAuthor}" styleClass="myButton" />
+        <h:commandButton value="Back" action="#{assignAuthorBean.goBack}" immediate="true" styleClass="myButton" />
+
+        <h:panelGroup id="messagesGroup">
+            <ui:repeat value="#{facesContext.messageList}" var="message">
+                <ul class="myMessages #{message.severity.toString().toLowerCase()}">
+                    <li>
+                        <h:outputText value="#{message.summary}" />
+                        <h:outputText value="#{message.detail}" escape="false"/>
+                    </li>
+                </ul>
+            </ui:repeat>
+        </h:panelGroup>
+    </h:form>
+    </ui:define>
+</ui:composition>
+</html>

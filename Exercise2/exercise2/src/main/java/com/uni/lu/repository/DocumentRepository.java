@@ -6,6 +6,8 @@ import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 
 @Stateless
@@ -34,9 +36,16 @@ public class DocumentRepository {
     }
 
     public void createDocument(Document document) {
-        // Fetch authors by their IDs and set them in the document
-        document.setAuthors(authorRepository.findAuthorsByIds(document.getAuthorIds())); // Assuming you have getAuthorIds() method in Document
-
         em.persist(document);
+    }
+
+    @Transactional // Always wrap update/delete in a transaction
+    public void updateDocument(Document document) {
+        em.merge(document); // Update the existing document
+    }
+
+    @Transactional
+    public void deleteDocument(Document document) {
+        em.remove(em.merge(document)); // First merge to get managed, then remove
     }
 }

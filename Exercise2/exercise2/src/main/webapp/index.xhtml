@@ -1,62 +1,117 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="jakarta.faces.html"
-      xmlns:ui="jakarta.faces.facelets" xml:lang="en">
-   <h:head>
-      <title>Showing Customers</title>
-   </h:head>
-   <h:body>
-      <h1>Find Customers</h1>
-      <p>Please input the ID of the customer:</p>
-      <div>
-         <h:form>
-            <h:panelGrid columns="2">
-               <h:outputText value="Customer ID: " />
-               <h:inputText value="#{customer.id}" required="true" />
-               <h:commandButton value="Find Customer Information"
-                                action="#{customer.findById}"/>
-            </h:panelGrid>
-         </h:form>
-      </div>
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="templates/template.xhtml">
+  <ui:define name="title">Displaying all documents</ui:define>
+  <ui:define name="top">Displaying list of all documents</ui:define>
+  <ui:define name="content">
+      <h:form id="documentListForm"> 
+        <h:dataTable value="#{documentBean.documents}" var="doc"
+                     rendered="#{!documentBean.hideDocumentList}">
+            <h:column headerClass="dataTableHeader" styleClass="dataTableCell">
+                <f:facet name="header">Title</f:facet>
+                <h:outputText value="#{doc.title}" />
+            </h:column>
+            <h:column headerClass="dataTableHeader" styleClass="dataTableCell">
+                <f:facet name="header">Publication Date</f:facet>
+                <h:outputText value="#{doc.publicationDate}">
+                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                </h:outputText>
+            </h:column>
 
-      <ui:fragment rendered="${not empty customer.name}">
-         <div style="padding-top:5mm">
-            <h:outputText value="Found customer name as '${customer.name}' and customer
-                          email as '${customer.email}'"/>
-         </div>
-      </ui:fragment>
+            <h:column headerClass="dataTableHeader" styleClass="dataTableCell">
+                <h:commandButton value="View" action="#{documentBean.viewDocumentDetails(doc)}" styleClass="rightButton" />
+            </h:column>
 
-      <ui:fragment rendered="${empty customer.name and not empty customer.id}">
-         <div style="color:red; padding-top: 5mm">
-            <h:outputText value="Customer does not exist!!" />
-         </div>
-      </ui:fragment>
-      
-      <ui:fragment rendered="${not empty customer.placedOrders}">
-        <h2 style="padding-top:5mm">Placed Orders for this customer (one-to-many relationship example)</h2>
-        <ul>
-      <ui:repeat value="#{customer.placedOrders}" var="order">
-        <li> <strong>${order.description} </strong>: ${order.price} EU </li>
-      </ui:repeat>
-        </ul>
-      </ui:fragment>
-      
-      <ui:fragment rendered="${not empty customer.visitedStores}">
-        <h2 style="padding-top:1cm">Visited Store Locations (many-to-many relationship example)</h2>
-        <ul>
-          <ui:repeat value="#{customer.visitedStores}" var="store">
-            <li> <strong>${store.location} </strong></li>
-         </ui:repeat>
-        </ul>
-      </ui:fragment>
+            <h:column headerClass="dataTableHeader" styleClass="dataTableCell">
+                <h:commandButton value="Edit" action="#{documentBean.editDocument(doc)}" styleClass="rightButton" />
+            </h:column>
+            <h:column headerClass="dataTableHeader" styleClass="dataTableCell">
+                <h:commandButton value="Delete" action="#{documentBean.deleteDocument(doc)}" 
+                                 onclick="return confirm('Are you sure you want to delete this document?')" styleClass="rightButton"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
 
-      <div style="padding-top:5mm">
-      <hr/>
-      <div>
-          Please use <h:link value="this link" outcome="index2"/> to go to example page for insert/update.
-      </div>
-      </div>
-   </h:body>
+    <h:form id="viewDetailsForm" styleClass="documentDetailsDiv">
+        <h:panelGrid columns="2" styleClass="documentDetailsDiv" rendered="#{documentBean.selectedDocument != null and !documentBean.editing}" >
+            
+                <h:outputLabel value="Title:" styleClass="documentDetailsDiv"/>
+                <h:outputText value="#{documentBean.selectedDocument.title}" styleClass="documentDetailsDiv" />
+
+                <h:outputLabel value="Abstract:" styleClass="documentDetailsDiv"/>
+                <h:outputText value="#{documentBean.selectedDocument.abstractText}" styleClass="documentDetailsDiv" />
+
+                <h:outputLabel value="Publication Date:" styleClass="documentDetailsDiv" />
+                <h:outputText value="#{documentBean.selectedDocument.publicationDate}" styleClass="documentDetailsDiv">
+                    <f:convertDateTime pattern="dd-MM-yyyy" />
+                </h:outputText>
+
+                <h:outputLabel value="Storage Location:" styleClass="documentDetailsDiv" />
+                <h:outputText value="#{documentBean.selectedDocument.storageLocation}" styleClass="documentDetailsDiv" />
+
+                <h:outputLabel value="Authors:" styleClass="documentDetailsDiv" />
+                <h:dataTable value="#{documentBean.selectedDocument.authors}" var="author" styleClass="documentDetailsDiv">
+                    <h:column>
+                        <h:outputText value="#{author.name}" />
+                    </h:column>
+                </h:dataTable>
+                <h:commandButton value="Back" action="#{documentBean.returnToSamePage}" styleClass="myButton" />
+        </h:panelGrid>
+    </h:form> 
+
+        <h:panelGrid columns="2" rendered="#{documentBean.selectedDocument != null and documentBean.editing}">
+            <h:form id="editDetailsForm">
+                <h:panelGrid columns="2" rendered="#{documentBean.selectedDocument != null}">
+                    <h:outputLabel value="Title:" for="title" />
+                    <h:inputText id="title" value="#{documentBean.selectedDocument.title}">
+                        <f:attribute name="submittedValue" value="#{documentBean.selectedDocument.abstractText}" />
+                    </h:inputText>
+                    
+                    <h:outputLabel value="Abstract:" for="abstract" />
+                    <h:inputTextarea id="abstract" value="#{documentBean.selectedDocument.abstractText}">
+                        <f:attribute name="submittedValue" value="#{documentBean.selectedDocument.abstractText}" />
+                    </h:inputTextarea>
+
+                    <h:outputLabel value="Publication Date:" for="pubDate" />
+                    <h:inputText id="pubDate" value="#{documentBean.selectedDocument.publicationDate}">
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                        <f:attribute name="submittedValue" value="#{documentBean.selectedDocument.publicationDate}" />
+                    </h:inputText>
+
+                    <h:outputLabel value="Storage Location:" for="storageLoc" />
+                    <h:inputText id="storageLoc" value="#{documentBean.selectedDocument.storageLocation}">
+                        <f:attribute name="submittedValue" value="#{documentBean.selectedDocument.storageLocation}" />
+                    </h:inputText>
+                </h:panelGrid>
+
+
+
+                <h:commandButton value="Save" action="#{documentBean.saveDocument}"  styleClass="myButton" />
+                <h:commandButton value="Cancel" action="#{documentBean.cancelEdit}" immediate="true"  styleClass="myButton" />
+
+            </h:form>
+        </h:panelGrid>
+    <h:form rendered="#{!documentBean.hideDocumentList}">
+        <h:commandButton value="Add Document" action="addDocument" styleClass="myButton" />
+        <h:commandButton value="Search Document" action="searchDocument" styleClass="myButton" />
+        <h:commandButton value="Authors" action="authors" styleClass="myButton" />
+    </h:form>
+
+    <h:form>
+        <h:panelGroup id="messagesGroup">
+            <ui:repeat value="#{facesContext.messageList}" var="message">
+                <ul class="myMessages #{message.severity.toString().toLowerCase()}">
+                    <li>
+                        <span>#{message.summary}</span>
+                        <span>#{message.detail}</span>
+                    </li>
+                </ul>
+            </ui:repeat>
+        </h:panelGroup>
+    </h:form>
+  </ui:define>
+</ui:composition>
 </html>
-

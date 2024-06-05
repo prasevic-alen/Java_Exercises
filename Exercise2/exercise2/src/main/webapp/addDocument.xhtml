@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="templates/template.xhtml">
+  <ui:define name="title">Adding new Document</ui:define>
+  <ui:define name="top">Adding new Document</ui:define>
+  <ui:define name="content">
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="title" value="Title:" />
+            <h:inputText id="title" value="#{documentBean.newDocument.title}" />
+            
+            <h:outputLabel for="abstract" value="Abstract:" />
+            <h:inputText id="abstract" value="#{documentBean.newDocument.abstractText}" />
+
+            <h:outputLabel for="pubDate" value="Publication Date (yyyy-MM-dd):"/>
+            <h:inputText id="pubDate" value="#{documentBean.newDocument.publicationDate}">
+                <f:convertDateTime pattern="yyyy-MM-dd" />
+            </h:inputText>
+
+            <h:outputLabel for="location" value="Storage Location:" />
+            <h:inputText id="location" value="#{documentBean.newDocument.storageLocation}" />
+
+            <h:outputLabel for="author" value="Author:" />
+            <h:selectOneMenu id="author" value="#{documentBean.selectedAuthorId}">
+                <f:selectItems value="#{documentBean.availableAuthors}" var="author" itemValue="#{author.id}" itemLabel="#{author.name}" />
+            </h:selectOneMenu>
+        </h:panelGrid>
+
+        <h:commandButton value="Create Document" actionListener="#{documentBean.createNewDocument}" update="@form" styleClass="myButton"/>
+        <h:commandButton value="Back" action="#{documentBean.goBack}" styleClass="myButton" />
+    </h:form>
+
+    <h:form>
+      <h:panelGroup id="messagesGroup">
+        <ui:repeat value="#{facesContext.messageList}" var="message">
+            <ul class="myMessages #{message.severity.toString().toLowerCase()}">
+                <li>
+                    <h:outputText value="#{message.summary}" />
+                    <h:outputText value="#{message.detail}" escape="false"/>
+                </li>
+            </ul>
+        </ui:repeat>
+      </h:panelGroup>
+    </h:form>
+  </ui:define>
+</ui:composition>
+</html>

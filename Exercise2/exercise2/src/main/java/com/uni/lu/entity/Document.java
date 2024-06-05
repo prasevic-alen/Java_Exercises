@@ -1,7 +1,8 @@
 package com.uni.lu.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ public class Document {
     private String abstractText;
 
     @Column(name = "publication_date")
-    private LocalDate publicationDate;
+    private Date publicationDate;
 
     @Column(name = "storage_location")
     private String storageLocation;
@@ -56,12 +57,12 @@ public class Document {
         this.abstractText = abstractText;
     }
 
-    public LocalDate getPublicationDate() {
+    public Date getPublicationDate() {
         return publicationDate;
     }
 
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
+    public void setPublicationDate(Date date) {
+        this.publicationDate = date;
     }
 
     public String getStorageLocation() {

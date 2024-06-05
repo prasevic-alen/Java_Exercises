@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="templates/template.xhtml">
+    <ui:define name="title">Add New Author</ui:define>
+    <ui:define name="top">Add New Author</ui:define>
+    <ui:define name="content">
+        <h:form id="addAuthorForm">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="authorName" value="Author Name:" />
+                <h:inputText id="authorName" value="#{authorBean.newAuthor.name}" required="true">
+                    <h:message for="authorName" display="none" /> 
+                </h:inputText> <br /> <br />
+
+                <h:outputText rendered="#{authorBean.newAuthor.name == null}" styleClass="validationMessage">
+                    Please enter an author name.
+                </h:outputText>
+
+                <h:commandButton value="Create Author" action="#{authorBean.createNewAuthor}" />
+                <h:commandButton value="Back" action="#{authorBean.goBack}" immediate="true" styleClass="myButton"/>
+            </h:panelGrid>
+
+            <h:panelGroup id="messagesGroup">
+                <ui:repeat value="#{facesContext.messageList}" var="message">
+                    <ul class="myMessages #{message.severity.toString().toLowerCase()}">
+                        <li>
+                            <h:outputText value="#{message.summary}" />
+                            <h:outputText value="#{message.detail}" escape="false"/>
+                        </li>
+                    </ul>
+                </ui:repeat>
+            </h:panelGroup>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>
