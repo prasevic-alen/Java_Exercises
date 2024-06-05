@@ -1,0 +1,40 @@
+alen@M3-MacBookPro Exercise2 % tree
+`-- exercise2
+    |-- Info
+    |   `-- projectStructure.txt
+    |-- pom.xml
+    `-- src
+        |-- main.
+        |   | java.com.uni.lu
+        |   |               |-- bean
+        |   |               |   |-- AssignAuthorBean.java
+        |   |               |   |-- AuthorBean.java
+        |   |               |   `-- DocumentBean.java
+        |   |               |-- entity
+        |   |               |   |-- Author.java
+        |   |               |   `-- Document.java
+        |   |               `-- repository
+        |   |                   |-- AuthorRepository.java
+        |   |                   `-- DocumentRepository.java
+        |   |-- resources
+        |   |   `-- META-INF
+        |   |       `-- persistence.xml
+        |   `-- webapp
+        |       |-- WEB-INF
+        |       |   |-- beans.xml
+        |       |   |-- faces-config.xml
+        |       |   |-- jboss-web.xml
+        |       |   `-- web.xml
+        |       |-- addAuthor.xhtml
+        |       |-- addDocument.xhtml
+        |       |-- assignAuthor.xhtml
+        |       |-- authors.xhtml
+        |       |-- index.xhtml
+        |       |-- resources
+        |       |   `-- css
+        |       |       `-- myStyle.css
+        |       |-- searchDocument.xhtml
+        |       `-- templates
+        |           `-- template.xhtml
+        `-- test
+            `-- java

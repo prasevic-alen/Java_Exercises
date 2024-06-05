@@ -1,7 +1,12 @@
 ## University of Luxembourg - Java for Enterprise Applications projects
 
-### Project1 - Numberle Game
-- The application is in the folder Exercise1
-- Application has src folder, pom.xml, and Info folder with sample video and explication of how to use
+### Project2 - JPA and database manipulation 
+- The application is in the folder Exercise2/exercise2.
+- Folder structure is presented in the exercise2/Info/projectStructure.txt.
+- More information on how to use is present in the exercise2/Info/ReadMe.txt.
+- Sample screen cast on functionality is present in the exercise2/Info/ folder.
 
-* Tested on the Java 21.0.1, and Maven 3.9.6
+
+
+
+* Tested on the Java 21.0.1, and Maven 3.9.6.
