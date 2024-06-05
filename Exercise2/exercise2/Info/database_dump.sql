@@ -4,6 +4,9 @@
 -- CREATE DATABASE javaee;
 USE javaee;
 
+-- # First dropping table Document_Author due to constrains  
+DROP TABLE IF EXISTS `Document_Author`;
+
 -- Table structure for table `Author`
 DROP TABLE IF EXISTS `Author`;
 CREATE TABLE `Author` (
@@ -46,7 +49,7 @@ INSERT INTO `Document` (`id`, `title`, `abstract_text`, `publication_date`, `sto
 (10, 'Document Ten', 'Abstract text of document ten', '2023-05-22', '/docs/doc10.pdf');
 
 -- Table structure for table `Document_Author`
-DROP TABLE IF EXISTS `Document_Author`;
+
 CREATE TABLE `Document_Author` (
   `document_id` INT NOT NULL,
   `author_id` INT NOT NULL,
