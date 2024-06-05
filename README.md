@@ -8,5 +8,6 @@
 
 
 
-
+- Screen cast present two style issues, that are fixed in the code
+  "Fixed issue with html brake <br/> on some pages and fixed button style"
 * Tested on the Java 21.0.1, and Maven 3.9.6.
