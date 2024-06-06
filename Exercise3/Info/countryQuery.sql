@@ -1,5 +1,5 @@
 query {
-    covidStats(country: "serbia") {
+    covidStats(country: "Luxembourg") {
         country
         cases
         todayCases

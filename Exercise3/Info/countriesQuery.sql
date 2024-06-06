@@ -1,5 +1,5 @@
 query {
-    covidStatsForCountries(countries: ["serbia", "usa", "canada"]) {
+    covidStatsForCountries(countries: ["Serbia", "Luxembourg", "Germany"]) {
         country
         cases
         todayCases
