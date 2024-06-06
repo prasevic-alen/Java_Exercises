@@ -5,17 +5,21 @@ covid-stats-springboot/
 │   │   │   └── com/uni/lu/springboot/
 │   │   │       ├── CovidGraphqlApplication.java
 │   │   │       ├── controller/
-│   │   │       │   └── ExampleController.java
+│   │   │       │   └── CustomErrorController.java
 │   │   │       ├── model/
 │   │   │       │   └── CovidStats.java
+│   │   │       ├── repository/
+│   │   │       │   └── CovidStatsRepository.java
 │   │   │       ├── resolver/
 │   │   │       │   └── CovidDataResolver.java
 │   │   │       └── service/
 │   │   │           └── CovidDataService.java
 │   │   └── resources/
 │   │       ├── application.properties
-│   │       └── graphql
-|   |           └── schema.graphqls
+│   │       ├── graphql
+|   |       │    └── schema.graphqls
+|   |       └── static
+|   |            └── error.html
 ├── build.gradle
 ├── settings.gradle
 └── Info
