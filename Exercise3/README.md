@@ -21,5 +21,9 @@
 ## Example queries, that could be as well
     Example queries can be found in Info/*.sql
 
+## Logging
+    I added loging during the developemtn, but still left them to see how data exchange flows
+    
 ## Application is tested
     * Tested on the Java 21.0.1, and Gradle 8.8.
+

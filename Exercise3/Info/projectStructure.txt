@@ -17,12 +17,13 @@ covid-stats-springboot/
 │   │   └── resources/
 │   │       ├── application.properties
 │   │       ├── graphql
-|   |       │    └── schema.graphqls
-|   |       └── static
-|   |            └── error.html
+│   │       │    └── schema.graphqls
+│   │       └── static
+│   │            └── error.html
+├── Info
+│    ├── countriesQuery.sql
+│    ├── countryQuery.sql
+│    ├── qraphQL_ScreenCast.mp4
+│    └── projectStructure.txt
 ├── build.gradle
-├── settings.gradle
-└── Info
-    ├── countriesQuery.sql
-    ├── countryQuery.sql
-    └── projectStructure.txt
+└──  settings.gradle
