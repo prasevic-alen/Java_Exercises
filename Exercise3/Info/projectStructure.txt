@@ -1,0 +1,24 @@
+covid-stats-springboot/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/uni/lu/springboot/
+│   │   │       ├── CovidGraphqlApplication.java
+│   │   │       ├── controller/
+│   │   │       │   └── ExampleController.java
+│   │   │       ├── model/
+│   │   │       │   └── CovidStats.java
+│   │   │       ├── resolver/
+│   │   │       │   └── CovidDataResolver.java
+│   │   │       └── service/
+│   │   │           └── CovidDataService.java
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       └── graphql
+|   |           └── schema.graphqls
+├── build.gradle
+├── settings.gradle
+└── Info
+    ├── countriesQuery.sql
+    ├── countryQuery.sql
+    └── projectStructure.txt
