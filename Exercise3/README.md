@@ -16,7 +16,7 @@
 ## Using the application
     You can use the GraphiQL interface to test and execute GraphQL queries.
     - Access the GraphiQL interface for testing GraphQL queries at:
-      http://localhost:8081/Exercise3
+      http://localhost:8080/Exercise3
 
 ## Example queries, that could be as well
     Example queries can be found in Info/*.sql

@@ -1,0 +1,20 @@
+type Query {
+    covidStats(country: String!): CovidStats
+    covidStatsForCountries(countries: [String!]!): [CovidStats]
+}
+
+type CovidStats {
+    country: String
+    cases: Int
+    todayCases: Int
+    deaths: Int
+    todayDeaths: Int
+    recovered: Int
+    active: Int
+    critical: Int
+    casesPerOneMillion: Int
+    deathsPerOneMillion: Int
+    tests: Int
+    testsPerOneMillion: Int
+    population: Int
+}

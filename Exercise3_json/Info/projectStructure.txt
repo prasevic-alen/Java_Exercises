@@ -1,0 +1,29 @@
+covid-stats-springboot/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/uni/lu/springboot/
+│   │   │       ├── CovidGraphqlApplication.java
+│   │   │       ├── controller/
+│   │   │       │   └── CustomErrorController.java
+│   │   │       ├── model/
+│   │   │       │   └── CovidStats.java
+│   │   │       ├── repository/
+│   │   │       │   └── CovidStatsRepository.java
+│   │   │       ├── resolver/
+│   │   │       │   └── CovidDataResolver.java
+│   │   │       └── service/
+│   │   │           └── CovidDataService.java
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       ├── graphql
+│   │       │    └── schema.graphqls
+│   │       └── static
+│   │            └── error.html
+├── Info
+│    ├── countriesQuery.sql
+│    ├── countryQuery.sql
+│    ├── qraphQL_ScreenCast.mp4
+│    └── projectStructure.txt
+├── build.gradle
+└──  settings.gradle
