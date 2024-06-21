@@ -5,11 +5,12 @@ covid-stats-springboot/
 │   │   │   └── com/uni/lu/springboot/
 │   │   │       ├── CovidGraphqlApplication.java
 │   │   │       ├── controller/
-│   │   │       │   └── CustomErrorController.java
+│   │   │       │   ├── CustomErrorController.java
+│   │   │       │   ├── HomePage.java
+│   │   │       │   └── RefetchController.java
 │   │   │       ├── model/
 │   │   │       │   └── CovidStats.java
 │   │   │       ├── repository/
-│   │   │       │   └── CovidStatsRepository.java
 │   │   │       ├── resolver/
 │   │   │       │   └── CovidDataResolver.java
 │   │   │       └── service/
@@ -18,12 +19,20 @@ covid-stats-springboot/
 │   │       ├── application.properties
 │   │       ├── graphql
 │   │       │    └── schema.graphqls
-│   │       └── static
-│   │            └── error.html
+│   │       ├── static
+│   │       │    ├── css
+│   │       │    │    └── styles.css
+│   │       │    └── images
+│   │       │         ├── covid_header.jpg
+│   │       │         └── page_404_header.jpg
+│   │       └── templates
+│   │               ├── error.html
+│   │               ├── home.html
+│   │               └── refetch.html
 ├── Info
 │    ├── countriesQuery.sql
 │    ├── countryQuery.sql
 │    ├── qraphQL_ScreenCast.mp4
 │    └── projectStructure.txt
 ├── build.gradle
-└──  settings.gradle
+└── settings.gradle
