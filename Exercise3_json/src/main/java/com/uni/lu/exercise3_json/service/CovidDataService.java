@@ -1,7 +1,6 @@
 package com.uni.lu.exercise3_json.service;
 
 import com.uni.lu.exercise3_json.model.CovidStats;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.json.JsonParser;
@@ -29,6 +28,7 @@ public class CovidDataService {
         refetchData(); // Initial fetch
     }
 
+    @SuppressWarnings("unchecked")
     public void refetchData() {
         String url = "https://disease.sh/v3/covid-19/countries";
         List<CovidStats> statsList = new ArrayList<>();
@@ -36,9 +36,11 @@ public class CovidDataService {
         List<Object> list = jsonParser.parseList(jsonResponse);
 
         for (Object obj : list) {
-            Map<String, Object> jsonObject = (Map<String, Object>) obj;
-            CovidStats stats = parseCovidStats(jsonObject);
-            statsList.add(stats);
+            if (obj instanceof Map) {
+                Map<String, Object> jsonObject = (Map<String, Object>) obj;
+                CovidStats stats = parseCovidStats(jsonObject);
+                statsList.add(stats);
+            }
         }
         cachedStats = statsList;
         logger.info("Data refetched successfully");

@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class RefetchController {
+public class HomePage {
 
     private final CovidDataService covidDataService;
 
-    public RefetchController(CovidDataService covidDataService) {
+    public HomePage(CovidDataService covidDataService) {
         this.covidDataService = covidDataService;
     }
 
-    @RequestMapping("/api/refetch")
+    @RequestMapping("/")
     @ResponseBody
     public ModelAndView refetchData() {
         covidDataService.refetchData();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("refetchSuccess.html");
-        // return "Data refetched successfully!";
+        modelAndView.setViewName("home.html");
         return modelAndView;
     }
 }
