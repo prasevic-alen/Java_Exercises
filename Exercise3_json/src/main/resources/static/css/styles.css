@@ -17,6 +17,17 @@ body {
     border-radius: 8px;
 }
 
+.container_error {
+    text-align: center;
+    padding: 150px 50px 150px 50px;
+    background-color: #f0f8ff;
+    background-position:center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
 h1 {
     color: #333;
 }

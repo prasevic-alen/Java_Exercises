@@ -20,7 +20,7 @@ public class RefetchController {
     public ModelAndView refetchData() {
         covidDataService.refetchData();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("refetchSuccess.html");
+        modelAndView.setViewName("refetch.html");
         // return "Data refetched successfully!";
         return modelAndView;
     }
